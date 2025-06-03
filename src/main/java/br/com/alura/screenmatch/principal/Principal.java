@@ -29,13 +29,12 @@ public class Principal {
         List<DadosTemporada> temporadas = new ArrayList<>();
 
         for (int i = 1; i <= dadosSerie.TotalTemporadas(); i++) {
-            var jsonTemporadas = consumoApi.obterDados("http://www.omdbapi.com/?t=gilmore+girls&season=" + i + "&apikey=8a4d7df8");
+            var jsonTemporadas = consumoApi.obterDados(ENDERECO + nomeSerie.replace(" ", "+") +"&season=" + i + API_KEY);
             var dadosTemporadas = conversor.obterDados(jsonTemporadas, DadosTemporada.class);
             temporadas.add(dadosTemporadas);
         }
         temporadas.forEach(System.out::println);
+
+        temporadas.forEach(t -> t.episodios().forEach(e -> System.out.println(e.titulo())));
     }
-
-
-
 }
