@@ -12,7 +12,7 @@ public class ConsultaGemini {
                 .modelName("gemini-1.5-flash")
                 .build();
 
-        String response = gemini.generate("Traduza para português o texto: " + texto);
+        String response = gemini.generate("Traduza para PT-BR o texto: " + texto);
         return response;
     }
 }
